@@ -1,0 +1,9 @@
+# Netscape HTTP Cookie File
+# File ini kosong — belum ada cookies.
+# Lihat instruksi di bawah untuk mengisinya.
+#
+# CARA MENDAPATKAN COOKIES (untuk konten butuh login):
+# 1. Install ekstensi: "Get cookies.txt LOCALLY" di Chrome/Firefox
+# 2. Login ke YouTube / TikTok / Instagram / Facebook / X
+# 3. Klik ekstensi → Export → Ganti isi file ini dengan hasilnya
+# 4. Restart server: Ctrl+C lalu npm run dev

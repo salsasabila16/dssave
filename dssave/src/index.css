@@ -1,0 +1,412 @@
+@import "tailwindcss";
+
+/* ── Design tokens ───────────────────────────────────────────────── */
+@theme {
+  --color-space-bg: #0A192F;
+  --color-space-secondary: #102A43;
+  --color-space-accent: #1A4973;
+  --color-space-highlight: #114C87;
+  --color-space-text: #D9E2EC;
+  --color-space-muted: #829AB1;
+  --color-brand-blue: #2D9CDB;
+  --color-brand-purple: #0B8FFF;
+  --color-brand-cyan: #00D2FF;
+  --font-family-heading: 'Syne', system-ui, sans-serif;
+  --font-family-body: 'DM Sans', system-ui, sans-serif;
+}
+
+/* ── Base ─────────────────────────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    background-color: #04091A;
+    color: #D9E2EC;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Syne', system-ui, sans-serif;
+    color: #ffffff;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+  }
+
+  a { text-decoration: none; }
+  button { cursor: pointer; }
+
+  #root {
+    width: 100%;
+    min-height: 100svh;
+    position: relative;
+    text-align: left;
+    border: none;
+    max-width: 100%;
+  }
+}
+
+/* ── Utilities ────────────────────────────────────────────────────── */
+@layer utilities {
+
+  /* Typography */
+  .font-heading { font-family: 'Syne', system-ui, sans-serif; }
+
+  /* Galaxy background — biru galaksi pekat */
+  .galaxy-bg {
+    background:
+      radial-gradient(ellipse 80% 60% at 10% 30%, rgba(26,73,115,0.45) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 90% 10%, rgba(17,76,135,0.35) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 40% at 50% 90%, rgba(45,156,219,0.18) 0%, transparent 55%),
+      radial-gradient(ellipse 30% 30% at 70% 50%, rgba(11,143,255,0.12) 0%, transparent 60%),
+      linear-gradient(175deg, #071830 0%, #04091A 55%, #071525 100%);
+  }
+
+  /* Glass card */
+  .glass-card {
+    background: rgba(13, 35, 58, 0.58);
+    border: 1px solid rgba(45,156,219,0.13);
+    backdrop-filter: blur(18px) saturate(1.2);
+    -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  }
+  .glass-card-hover {
+    transition: border-color 0.28s ease, box-shadow 0.28s ease, transform 0.28s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .glass-card-hover:hover {
+    border-color: rgba(45,156,219,0.38);
+    box-shadow: 0 0 28px rgba(45,156,219,0.11), 0 10px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);
+    transform: translateY(-4px);
+  }
+
+  /* Text gradient */
+  .text-gradient {
+    background: linear-gradient(130deg, #2D9CDB 0%, #0B8FFF 55%, #00D2FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glow button */
+  .glow-button {
+    background: linear-gradient(130deg, #1A4F80 0%, #2D9CDB 100%);
+    box-shadow: 0 0 0 1px rgba(45,156,219,0.35), 0 4px 20px rgba(45,156,219,0.28);
+    transition: box-shadow 0.28s ease, transform 0.2s ease, background 0.28s ease;
+    color: #ffffff;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+  .glow-button:hover {
+    box-shadow: 0 0 0 1px rgba(45,156,219,0.6), 0 4px 35px rgba(45,156,219,0.5);
+    transform: translateY(-2px);
+    background: linear-gradient(130deg, #1D5A90 0%, #38A8E8 100%);
+  }
+  .glow-button:active { transform: translateY(0); box-shadow: 0 0 0 1px rgba(45,156,219,0.4), 0 2px 10px rgba(45,156,219,0.3); }
+
+  /* Stars background */
+  .stars-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+      radial-gradient(1px 1px at 4% 7%,   rgba(255,255,255,0.65) 0%, transparent 100%),
+      radial-gradient(1px 1px at 11% 21%,  rgba(255,255,255,0.42) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 19% 53%, rgba(255,255,255,0.52) 0%, transparent 100%),
+      radial-gradient(1px 1px at 27% 74%,  rgba(255,255,255,0.35) 0%, transparent 100%),
+      radial-gradient(1px 1px at 35% 33%,  rgba(255,255,255,0.45) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 42% 88%, rgba(255,255,255,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 50% 11%,  rgba(255,255,255,0.38) 0%, transparent 100%),
+      radial-gradient(1px 1px at 57% 63%,  rgba(255,255,255,0.45) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 64% 42%, rgba(255,255,255,0.62) 0%, transparent 100%),
+      radial-gradient(1px 1px at 72% 82%,  rgba(255,255,255,0.35) 0%, transparent 100%),
+      radial-gradient(1px 1px at 80% 26%,  rgba(255,255,255,0.45) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 87% 56%, rgba(255,255,255,0.52) 0%, transparent 100%),
+      radial-gradient(1px 1px at 93% 14%,  rgba(255,255,255,0.38) 0%, transparent 100%),
+      radial-gradient(1px 1px at 98% 70%,  rgba(255,255,255,0.42) 0%, transparent 100%),
+      radial-gradient(1px 1px at 2% 46%,   rgba(255,255,255,0.28) 0%, transparent 100%),
+      radial-gradient(1px 1px at 46% 31%,  rgba(255,255,255,0.35) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 68% 5%, rgba(255,255,255,0.48) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 91%,  rgba(255,255,255,0.28) 0%, transparent 100%);
+  }
+
+  /* Nebula blob */
+  .nebula-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    pointer-events: none;
+    opacity: 0.13;
+  }
+
+  /* Section badge */
+  .section-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: #00D2FF;
+    background: rgba(0,210,255,0.07);
+    border: 1px solid rgba(0,210,255,0.2);
+    border-radius: 9999px;
+    padding: 0.28rem 0.9rem;
+  }
+
+  /* Section divider */
+  .section-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(45,156,219,0.2) 50%, transparent 100%);
+    margin: 0 auto;
+  }
+
+  /* Pulse animation for status dots */
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.5); }
+  }
+  .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+  /* Shine effect on cards */
+  @keyframes card-shine {
+    from { transform: translateX(-100%) skewX(-12deg); }
+    to { transform: translateX(200%) skewX(-12deg); }
+  }
+}
+
+/* ── CTA Section ────────────────────────────────────────────────────── */
+
+/* Dark mode */
+.cta-panel {
+  background: linear-gradient(135deg, rgba(10,28,55,0.85) 0%, rgba(6,15,30,0.92) 100%);
+  border: 1px solid rgba(45,156,219,0.18);
+  box-shadow: 0 0 80px rgba(45,156,219,0.08), inset 0 1px 0 rgba(255,255,255,0.04);
+}
+.cta-dots { display: none; }
+.cta-title { color: #ffffff; }
+.cta-accent { background: linear-gradient(130deg,#2D9CDB,#0B8FFF,#00D2FF); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.cta-sub { color: #829AB1; }
+.cta-btn {
+  background: linear-gradient(130deg, #1A4F80, #2D9CDB);
+  color: #ffffff;
+  box-shadow: 0 0 0 1px rgba(45,156,219,0.4), 0 4px 28px rgba(45,156,219,0.35);
+  transition: box-shadow 0.25s, transform 0.2s;
+}
+.cta-btn:hover {
+  box-shadow: 0 0 0 1px rgba(45,156,219,0.65), 0 6px 40px rgba(45,156,219,0.55);
+  transform: translateY(-2px);
+}
+
+/* Light mode — panel jadi gradien biru solid */
+.light-mode .cta-panel {
+  background: linear-gradient(135deg, #1262B3 0%, #0B8FFF 55%, #00BADB 100%) !important;
+  border: none !important;
+  box-shadow: 0 20px 60px rgba(11,143,255,0.3), 0 4px 20px rgba(11,143,255,0.2) !important;
+}
+.light-mode .cta-rings { display: none; }
+.light-mode .cta-dots  { display: block; }
+.light-mode .cta-badge {
+  background: rgba(255,255,255,0.15) !important;
+  border-color: rgba(255,255,255,0.3) !important;
+  color: #ffffff !important;
+}
+.light-mode .cta-title { color: #ffffff !important; }
+.light-mode .cta-accent { background: none !important; -webkit-text-fill-color: #ffffff !important; color: #ffffff !important; opacity: 0.9; }
+.light-mode .cta-sub   { color: rgba(255,255,255,0.78) !important; }
+.light-mode .cta-btn {
+  background: #ffffff !important;
+  color: #0B6FCC !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important;
+}
+.light-mode .cta-btn:hover {
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2) !important;
+  transform: translateY(-2px);
+}
+
+/* ── No scrollbar utility ───────────────────────────────────────────── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Scrollbar ─────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #060f1e; }
+::-webkit-scrollbar-thumb { background: #1A4973; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #2D9CDB; }
+
+/* ── Input focus ─────────────────────────────────────────────────── */
+input:focus { outline: none; }
+
+/* ── Light mode ─────────────────────────────────────────────────── */
+.light-mode {
+  --color-space-muted: #57606A;
+}
+
+/* Background — putih murni */
+.light-mode,
+body.light-mode {
+  background: #FFFFFF !important;
+  color: #0D1117;
+}
+
+/* Headings — hitam tajam */
+.light-mode h1,.light-mode h2,.light-mode h3,
+.light-mode h4,.light-mode h5,.light-mode h6 {
+  color: #0D1117 !important;
+}
+
+/* Body text — abu gelap, bukan biru */
+.light-mode p { color: #374151 !important; }
+.light-mode span:not(.text-gradient):not(.section-badge) { color: #374151; }
+
+/* Cards — putih solid dengan shadow nyata, bukan glass transparan */
+.light-mode .glass-card {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(0,0,0,0.08) !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 4px 20px rgba(0,0,0,0.04) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+.light-mode .glass-card-hover:hover {
+  border-color: rgba(45,156,219,0.4) !important;
+  box-shadow: 0 2px 8px rgba(45,156,219,0.1), 0 8px 32px rgba(0,0,0,0.08) !important;
+  transform: translateY(-3px);
+}
+
+/* Section badge */
+.light-mode .section-badge {
+  background: rgba(45,156,219,0.08) !important;
+  border-color: rgba(45,156,219,0.22) !important;
+  color: #0972B8 !important;
+}
+
+/* Section divider */
+.light-mode .section-divider {
+  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.08), transparent);
+}
+
+/* Navbar — putih solid, border bawah tipis */
+.light-mode header {
+  background: rgba(255,255,255,0.97) !important;
+  border-bottom: 1px solid rgba(0,0,0,0.08) !important;
+  box-shadow: 0 1px 12px rgba(0,0,0,0.05) !important;
+}
+.light-mode header nav a:not(.glow-button),
+.light-mode header nav button:not(.glow-button),
+.light-mode header .glass-card a {
+  color: #0D1117 !important;
+}
+.light-mode header nav a:not(.glow-button):hover,
+.light-mode header nav button:not(.glow-button):hover {
+  color: #0972B8 !important;
+  background-color: rgba(45,156,219,0.07) !important;
+}
+.light-mode header .glass-card {
+  background: #FFFFFF !important;
+  border-color: rgba(0,0,0,0.08) !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.1) !important;
+}
+.light-mode header .border-white\/10,
+.light-mode header .border-white\/12 {
+  border-color: rgba(0,0,0,0.1) !important;
+}
+
+/* Footer */
+.light-mode footer {
+  background: #EEF4FA !important;
+  border-top: 1px solid rgba(0,0,0,0.07) !important;
+}
+
+/* Form input */
+.light-mode input { color: #0D1117 !important; }
+.light-mode input::placeholder { color: #9CA3AF !important; }
+
+/* Hilangkan total efek langit berbintang & nebula */
+.light-mode .stars-layer,
+body.light-mode ~ * .stars-layer { display: none !important; }
+.light-mode .nebula-blob { display: none !important; }
+
+/* Teks muted (829AB1) jadi abu gelap di light mode */
+.light-mode .text-\[\#829AB1\] { color: #6B7280 !important; }
+
+/* Border putih transparan → gelap tipis */
+.light-mode .border-white\/5,
+.light-mode .border-white\/8 {
+  border-color: rgba(0,0,0,0.06) !important;
+}
+
+/* Hover bg putih/5 → abu sangat tipis */
+.light-mode .hover\:bg-white\/5:hover { background-color: rgba(0,0,0,0.04) !important; }
+
+/* Sembunyikan gradient gelap bawah Hero di light mode */
+.light-mode #home .absolute.bottom-0,
+.light-mode #home .pointer-events-none.absolute { background: transparent !important; }
+
+/* Hero download card di light mode */
+.light-mode #hero-input > div {
+  background: rgba(255,255,255,0.95) !important;
+  box-shadow: 0 0 0 1px rgba(45,156,219,0.2), 0 8px 40px rgba(45,156,219,0.08) !important;
+}
+.light-mode #hero-input .h-px { background: rgba(0,0,0,0.06) !important; }
+.light-mode #hero-input input { color: #0D1117 !important; }
+.light-mode #hero-input input::placeholder { color: rgba(90,120,150,0.55) !important; }
+
+/* FeaturesGrid bento cards di light mode */
+.light-mode .bg-white\/4 { background: rgba(0,0,0,0.03) !important; }
+.light-mode .border-white\/6 { border-color: rgba(0,0,0,0.07) !important; }
+.light-mode .bg-white\/5 { background: rgba(0,0,0,0.04) !important; }
+
+/* UniquenessSection — dark mode */
+.uniqueness-grid { background: transparent; }
+.uniqueness-card {
+  background: transparent;
+  border-right: 1px solid rgba(255,255,255,0.07);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.uniqueness-card:hover { background: rgba(255,255,255,0.025); }
+
+/* UniquenessSection — light mode */
+.light-mode .uniqueness-grid {
+  border-color: rgba(0,0,0,0.1) !important;
+  background: transparent !important;
+}
+.light-mode .uniqueness-card {
+  background: #FFFFFF !important;
+  border-right: 1px solid rgba(0,0,0,0.08) !important;
+  border-bottom: 1px solid rgba(0,0,0,0.08) !important;
+}
+.light-mode .uniqueness-card:hover { background: #F5F9FF !important; }
+.light-mode .bg-white\/5 { background: rgba(0,0,0,0.05) !important; }
+.light-mode .border-white\/8 { border-color: rgba(0,0,0,0.08) !important; }
+.light-mode .hover\:bg-white\/8:hover { background-color: rgba(0,0,0,0.05) !important; }
+
+/* Teks putih/terang hardcoded → gelap di light mode */
+.light-mode .text-\[\#D9E2EC\] { color: #0D1117 !important; }
+.light-mode .text-\[\#829AB1\] { color: #6B7280 !important; }
+.light-mode .text-white { color: #0D1117 !important; }
+.light-mode .placeholder\:text-\[\#829AB1\]\/60::placeholder { color: #9CA3AF !important; }
+
+/* Tombol border putih transparan → abu */
+.light-mode .border-white\/10 { border-color: rgba(0,0,0,0.1) !important; }
+.light-mode .border-white\/22 { border-color: rgba(0,0,0,0.15) !important; }
+
+/* Format chip di hero yang tidak aktif */
+.light-mode .border-white\/10.text-\[\#829AB1\] {
+  border-color: rgba(0,0,0,0.12) !important;
+  color: #374151 !important;
+}
+
+/* Input teks di hero */
+.light-mode input.bg-transparent { background: transparent !important; color: #0D1117 !important; }
+
+/* Teks gradient tetap dipertahankan */
+.light-mode .text-gradient {
+  -webkit-text-fill-color: transparent !important;
+}
+
