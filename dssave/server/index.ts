@@ -365,6 +365,15 @@ app.get("/api/platforms", (_req, res) => {
   });
 });
 
+// ── Serve frontend static files (production) ───────────────────────
+if (IS_PROD) {
+  const distPath = join(__dirname, "../../dist");
+  app.use(express.static(distPath));
+  app.get("*", (_req, res) => {
+    res.sendFile(join(distPath, "index.html"));
+  });
+}
+
 app.listen(PORT, () => {
   console.log(`\n✅ DSSAVE server → http://localhost:${PORT} [${IS_PROD ? "production" : "development"}]`);
   console.log(`   ffmpeg : ${FFMPEG_PATH}`);
