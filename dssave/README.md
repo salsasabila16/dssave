@@ -144,15 +144,6 @@ Returns a list of supported platforms.
 
 ---
 
-## Deployment
-
-### Vercel
-
-The project includes a `vercel.json` config. Deploy with:
-
-```bash
-vercel --prod
-```
 
 > **Note:** yt-dlp and FFmpeg must be available in your serverless environment. Consider using a dedicated server or Docker for production use.
 
@@ -206,6 +197,4 @@ ESLint is configured — run `npm run lint` before submitting.
 
 ---
 
-## License
-
-MIT © [DSSAVE](https://github.com/your-username/dssave)
+\
