@@ -5,15 +5,6 @@
 
   Download from YouTube, TikTok, Instagram, Facebook, X (Twitter), and Pinterest — no registration required.
 
-  ![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=white)
-  ![TypeScript](https://img.shields.io/badge/TypeScript-6-3178C6?style=flat-square&logo=typescript&logoColor=white)
-  ![Vite](https://img.shields.io/badge/Vite-8-646CFF?style=flat-square&logo=vite&logoColor=white)
-  ![Express](https://img.shields.io/badge/Express-5-000000?style=flat-square&logo=express&logoColor=white)
-  ![TailwindCSS](https://img.shields.io/badge/Tailwind-4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
-  ![PWA](https://img.shields.io/badge/PWA-Ready-5A0FC8?style=flat-square&logo=pwa&logoColor=white)
-  ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
-</div>
-
 ---
 
 ## Features
@@ -22,9 +13,7 @@
 - **Multiple Qualities** — 360p, 720p HD, 1080p Full HD
 - **Audio Extraction** — MP3 and WAV formats
 - **No Watermark** — clean downloads, no branding
-- **No Registration** — just paste a link and download
 - **PWA Support** — installable as a mobile app
-- **Bilingual UI** — English & Bahasa Indonesia
 - **Dark / Light Mode** — animated galaxy/nebula dark theme + light mode
 - **Secure Backend** — rate limiting, Helmet.js, CORS protection
 
@@ -37,8 +26,6 @@
 | Frontend | React 19, TypeScript, Vite, Tailwind CSS 4, Framer Motion |
 | Backend | Express 5, TypeScript, yt-dlp, FFmpeg |
 | PWA | vite-plugin-pwa |
-| Security | Helmet.js, express-rate-limit, CORS |
-| Deployment | Vercel, Docker |
 
 ---
 
@@ -87,32 +74,6 @@ npm run dev
 | `npm run build` | TypeScript compile + Vite production build |
 | `npm run preview` | Preview the production build locally |
 | `npm run lint` | Run ESLint |
-
----
-
-## API Reference
-
-All endpoints are prefixed with `/api`.
-
-### `POST /api/info`
-Fetch video metadata before downloading.
-
-**Request body:**
-```json
-{ "url": "https://www.youtube.com/watch?v=..." }
-```
-
-**Response:**
-```json
-{
-  "title": "Video Title",
-  "thumbnail": "https://...",
-  "uploader": "Channel Name",
-  "platform": "youtube"
-}
-```
-
-**Rate limit:** 10 requests / minute
 
 ---
 
@@ -193,6 +154,3 @@ dssave/
 
 ESLint is configured — run `npm run lint` before submitting.
 
----
-
-\
